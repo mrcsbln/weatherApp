@@ -16,8 +16,6 @@ async function checkWeather(city) {
   } else {
     let data = await response.json();
 
-    console.log(response);
-
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = `${Math.round(
       data.main.temp
@@ -43,5 +41,9 @@ async function checkWeather(city) {
 }
 
 searchButton.addEventListener("click", () => {
-  checkWeather(searchBox.value);
+  if (searchBox.value !== "") {
+    checkWeather(searchBox.value);
+  } else {
+    false;
+  }
 });
